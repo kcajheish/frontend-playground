@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import logo from './logo.svg';
 import './index.css';
+import './App.css';
 import App from './App';
-import TicTocGame from './TicTocGame';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <TicTocGame />, 
+    <App />, 
     document.getElementById('root')
 );
 

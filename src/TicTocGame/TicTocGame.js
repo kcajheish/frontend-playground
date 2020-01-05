@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
+import {Button,Col, Row, Container} from 'react-bootstrap';
+
 
 function Square(props) {
     return (
-      <button className="square" style={props.style} onClick={props.onClick}>
+      <Button variant="outline-secondary" className="square" style={props.style} onClick={props.onClick}>
         {props.value}
-      </button>
+      </Button>
     );
-  }
-  function Row(props) {
-    const start = this.props.start;
-    const end = this.props.end;
-    const squares = this.props.squares.slice(start, end+1);
-    return (
-      <div className="board-row">
-        {squares.map((item, index) => {
-          return (
-            <Square
-              style={props.style}
-              onClick={props.onClick}
-              value={props.value}
-            />
-          )
-        })}
-      </div>
-    )
   }
   
   class Board extends React.Component {
     renderSquare(i) {
       const winCondition = this.props.winCondition;
-      let style;
+      const buttonSize ="50px"
+      let style = {
+        boarder: buttonSize,
+        height: buttonSize,
+        width: buttonSize,
+        fontSize: "20px",
+        margin: "0px",
+        padding: "0px",
+      };
       if(winCondition && winCondition.includes(i)) {
-        style = {backgroundColor:'yellow'}
-      }
+        style.backgroundcolor = 'yello'
+      } 
       return (
         <Square
           value={this.props.squares[i]}
@@ -148,48 +140,57 @@ function Square(props) {
         
         const desc = move ?
           'Go to move #' + move + `(${row},${col})`:
-          'Got to game start';
+          'Go to game start';
         
         const style = move === this.state.stepNumber?{fontWeight: "bold"} : {};
         
         return (
           <li key={move}>
-            <button style={style}  onClick={() => this.jumpTo(move)}>{desc}</button>
+            <Button variant="light" style={style}  onClick={() => this.jumpTo(move)}>{desc}</Button>
           </li>
         )
       });
-      
-      const toggleReverse = (
-        <button 
-          onClick={() => 
-            this.setState({
-              isReverse : !isReverse
-            })
-        }>
-          reverse
-        </button>
-      );
   
       const restart = (
-        <button onClick={() => this.startOver()}>
+        <Button variant="info" onClick={() => this.startOver()}>
           restart
-        </button>
+        </Button>
       )
   
       return (
         <div className="game">
-          <div className="game-board">
-            <Board
-              squares={current.squares}
-              onClick={(i) => this.handleClick(i)}
-              winCondition={game.positions}
-            />
-          </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <div>{toggleReverse} {restart}</div>
-            <ol>{moves}</ol>
-          </div>
+          <Container>
+            <Row>
+              <Col xs={{ span: 3 }}>
+                <div style={{ marginTop: "100px" }} className="game-board">
+                  <h1>圈圈差差</h1>
+                  <Board
+                    squares={current.squares}
+                    onClick={(i) => this.handleClick(i)}
+                    winCondition={game.positions}
+                  />
+                </div>
+                <div className="restart">{restart}</div>
+                <div className="introduction">
+                  <ol>
+                    <li>點擊期盤隔下O或X</li>
+                    <li>右方訊息欄提醒該回合的下期選手</li>
+                    <li>右方有歷史紀錄</li>
+                    <li>點擊任意紀錄，可以回溯</li>
+                    <li>三個符號連線獲勝，有顏色提醒</li>
+                    <li>平手有訊息提示</li>
+                    <li>按restart，開新局</li>
+                  </ol>
+                </div>
+              </Col>
+              <Col xs={{ span: 3}}>
+                <div style={{ marginTop: "75px" }} className="game-info">
+                  <div>{status}</div>
+                  <ol>{moves}</ol>
+                </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       );
     }
