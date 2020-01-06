@@ -57,7 +57,7 @@ class ToDo extends React.Component {
         });
         return(
             <div>
-                <h1>ToDo Members</h1>
+                <h1>ToDo Members(Implements RestFramework)</h1>
                 <div className='users' style={{fontSize: "30px"}}>
                     <Col xs={{ span: 6 }}>
                         <ul>

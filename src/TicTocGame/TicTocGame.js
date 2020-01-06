@@ -173,8 +173,8 @@ function Square(props) {
                 <div className="restart">{restart}</div>
                 <div className="introduction">
                   <ol>
-                    <li>點擊期盤隔下O或X</li>
-                    <li>右方訊息欄提醒該回合的下期選手</li>
+                    <li>點擊棋盤格下O或X</li>
+                    <li>右方訊息欄提醒該回合的選手</li>
                     <li>右方有歷史紀錄</li>
                     <li>點擊任意紀錄，可以回溯</li>
                     <li>三個符號連線獲勝，有顏色提醒</li>
