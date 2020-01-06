@@ -3,6 +3,7 @@ import axios from 'axios';
 import Me from './Me/Me';
 import BubbleSort from './BubbleSort/BubbleSort';
 import TicTocGame from './TicTocGame/TicTocGame';
+import ToDo from './ToDo/ToDo'
 import {Button, Nav, NavDropdown, Navbar} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,6 +27,11 @@ class App extends Component {
       currentDisplay: <Me />
     })
   }
+  clickToDo() {
+    this.setState({
+      currentDisplay: <ToDo />
+    })
+  }
 
   clickTicToc() {
       this.setState({
@@ -47,7 +53,7 @@ class App extends Component {
         randomIntegers[i] = item;
       }
       return randomIntegers
-    }
+    };
 
     let randomIntegers = randomIntegersGenerator();
 
@@ -81,6 +87,7 @@ class App extends Component {
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={()=>{this.clickBook()}}>Book</NavDropdown.Item>
                   <NavDropdown.Item onClick={()=>{this.clickMessageBoard()}}>Message Board</NavDropdown.Item>
+                  <NavDropdown.Item onClick={()=>{this.clickToDo()}}>ToDo</NavDropdown.Item>
                   <NavDropdown.Item onClick={()=>{this.clickNBA()}}>Get NBA(in progress)</NavDropdown.Item>
                   <NavDropdown.Item onClick={()=>{this.clickMyStore()}}>MyStore(in progress)</NavDropdown.Item>
                 </NavDropdown>
