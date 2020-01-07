@@ -17,7 +17,7 @@ class App extends Component {
     }
   }
   clickBook() {
-    window.open("http://book-review-by-j.herokuapp.com/login")
+    window.open("http://book-review-by-j.herokuapp.com/")
   }
   clickMessageBoard() {
     window.open("https://message-board-jack.herokuapp.com/login")
