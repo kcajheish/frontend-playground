@@ -23,7 +23,7 @@ function Square(props) {
         padding: "0px",
       };
       if(winCondition && winCondition.includes(i)) {
-        style.backgroundcolor = 'yello'
+        style.backgroundColor = 'yellow'
       } 
       return (
         <Square
