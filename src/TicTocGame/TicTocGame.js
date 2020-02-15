@@ -11,7 +11,7 @@ function Square(props) {
   }
   
   class Board extends React.Component {
-    renderSquare(i) {
+    makeSquare(i) {
       const winCondition = this.props.winCondition;
       const buttonSize ="50px"
       let style = {
@@ -33,26 +33,35 @@ function Square(props) {
         />
       );
     }
+
+    makeRow(row, size) {
+      let a_row = [];
+      for(let col=0; col<size; col++) {
+        let index = row*size + col;
+        console.log('index' + index);
+        a_row.push(this.makeSquare(index));
+      }
+      return a_row
+    }
+    makeBoard(size) {
+      let rows = [];
+      for (let row=0; row < size; row++) {
+        rows.push(
+          <div className='board-row'>
+            {this.makeRow(row, size)}
+          </div>
+        );
+      }
+      return rows;
+    }
   
     render() {
+      const size = 3;
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {this.makeBoard(size)}
         </div>
+        
       );
     }
   }
